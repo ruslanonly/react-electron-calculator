@@ -1,15 +1,13 @@
 import { MemoryRouter as Router, Routes, Route } from 'react-router-dom';
+import MainPage from 'pages/Main/MainPage';
+
 import './App.css';
 
-function Hello() {
-  return <div>Calculator</div>;
-}
-
-export default function App() {
+export function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Hello />} />
+        <Route path="/" element={<MainPage />} />
       </Routes>
     </Router>
   );
