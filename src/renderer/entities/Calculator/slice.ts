@@ -1,5 +1,4 @@
-import { configureStore, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { useDispatch } from 'react-redux';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface ICalculatorState {
   screen: string;
@@ -25,14 +24,4 @@ const calculatorSlice = createSlice({
 
 export const { setScreen } = calculatorSlice.actions;
 
-export const store = configureStore({
-  reducer: {
-    calculator: calculatorSlice.reducer,
-  },
-});
-
-export type RootState = ReturnType<typeof store.getState>;
-
-export type AppDispatch = typeof store.dispatch;
-
-export const useAppDispatch: () => AppDispatch = useDispatch;
+export default calculatorSlice.reducer;

@@ -1,8 +1,8 @@
 import { MemoryRouter as Router, Routes, Route } from 'react-router-dom';
 import MainPage from 'pages/Main/MainPage';
-import { store } from 'entities/Calculator/store';
 import { Provider } from 'react-redux';
 import './App.css';
+import { store } from '../store';
 
 export function App() {
   return (
