@@ -17,7 +17,7 @@ const calculatorSlice = createSlice({
   initialState,
   reducers: {
     setScreen: (state, action: PayloadAction<string>) => {
-      state.screen = state.screen.concat(action.payload);
+      state.screen = action.payload;
     },
 
     setOperation: (state, action: PayloadAction<string>) => {
