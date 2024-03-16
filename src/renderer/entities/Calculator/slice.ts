@@ -16,12 +16,20 @@ const calculatorSlice = createSlice({
   name: 'calculator',
   initialState,
   reducers: {
-    setScreen: (state, actions: PayloadAction<string>) => {
-      state.screen = state.screen.concat(actions.payload);
+    setScreen: (state, action: PayloadAction<string>) => {
+      state.screen = state.screen.concat(action.payload);
+    },
+
+    setOperation: (state, action: PayloadAction<string>) => {
+      state.operation = action.payload;
+    },
+
+    setResult: (state, action: PayloadAction<number>) => {
+      state.result = action.payload;
     },
   },
 });
 
-export const { setScreen } = calculatorSlice.actions;
+export const { setScreen, setOperation, setResult } = calculatorSlice.actions;
 
 export default calculatorSlice.reducer;
