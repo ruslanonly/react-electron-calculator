@@ -1,14 +1,16 @@
 import { setScreen } from 'entities/Calculator';
 import { useAppDispatch, useAppSelector } from 'shared';
 
-export function useAppendValueToScreen() {
+export function useCalculator() {
   const dispatch = useAppDispatch();
   const screen = useAppSelector((state) => state.calculator.screen);
 
-  function appendValueToScreen(value: string) {
-    const updatedScreen = screen.concat(value);
+  function appendDigitToScreen(digit: string) {
+    const updatedScreen = screen.concat(digit);
     dispatch(setScreen(updatedScreen));
   }
 
-  return appendValueToScreen;
+  return {
+    appendDigitToScreen,
+  };
 }

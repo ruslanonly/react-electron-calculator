@@ -1,1 +1,1 @@
-export { useAppendValueToScreen } from './useAppendValueToScreen';
+export { useCalculator } from './useCalculator';
