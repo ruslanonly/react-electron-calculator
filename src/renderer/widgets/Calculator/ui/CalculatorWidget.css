@@ -1,4 +1,11 @@
 .CalculatorWidget {
-  width: 100vh;
+  background: black;
+  width: 100vw;
   height: 100vh;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  gap: 10px;
 }
