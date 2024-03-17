@@ -1,7 +1,9 @@
 import { Button } from 'shared/ui';
 import './Controls.css';
+import { useCalculator } from 'entities/Calculator';
 
 export function Controls() {
+  const { appendDigit } = useCalculator();
   return (
     <div className="Controls">
       <div className="Controls--left">
@@ -26,15 +28,11 @@ export function Controls() {
           <Button type="function">=</Button>
         </div>
         <div className="Controls--main">
-          <Button>7</Button>
-          <Button>8</Button>
-          <Button>9</Button>
-          <Button>4</Button>
-          <Button>5</Button>
-          <Button>6</Button>
-          <Button>1</Button>
-          <Button>2</Button>
-          <Button>3</Button>
+          {[7, 8, 9, 4, 5, 6, 1, 2, 3].map((digit) => (
+            <Button onClick={() => appendDigit(digit.toString())}>
+              {digit}
+            </Button>
+          ))}
           <Button type="zero">0</Button>
           <Button>,</Button>
         </div>

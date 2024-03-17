@@ -5,12 +5,12 @@ export function useCalculator() {
   const dispatch = useAppDispatch();
   const screen = useAppSelector((state) => state.calculator.screen);
 
-  function appendDigitToScreen(digit: string) {
+  function appendDigit(digit: string) {
     const updatedScreen = screen.concat(digit);
     dispatch(setScreen(updatedScreen));
   }
 
   return {
-    appendDigitToScreen,
+    appendDigit,
   };
 }

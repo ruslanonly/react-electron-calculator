@@ -4,10 +4,11 @@ import './Button.css';
 
 interface IButtonProps extends PropsWithChildren {
   type?: 'main' | 'function' | 'operation' | 'additional' | 'zero';
+  onClick?: () => void;
 }
 
 export function Button(props: IButtonProps) {
-  const { type = 'main', children, style } = props;
+  const { type = 'main', children, style, onClick } = props;
 
   const classNames = clsx('Button', {
     'Button--function': type === 'function',
@@ -17,7 +18,12 @@ export function Button(props: IButtonProps) {
   });
 
   return (
-    <button style={style} className={classNames} type="button">
+    <button
+      style={style}
+      className={classNames}
+      type="button"
+      onClick={onClick}
+    >
       <span>{children}</span>
     </button>
   );
