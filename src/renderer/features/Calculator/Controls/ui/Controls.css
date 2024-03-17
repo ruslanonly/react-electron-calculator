@@ -1,8 +1,50 @@
 .Controls {
   height: min-content;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(5, 1fr);
   display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 12px;
+}
+
+.Controls--left {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(5, 1fr);
+  gap: 12px;
+}
+
+.Controls--right {
+  height: min-content;
+  display: grid;
+  grid-template-areas:
+    'o o o f'
+    'm m m f'
+    'm m m f'
+    'm m m f'
+    'm m m f';
   gap: 12px;
   width: 100%;
+}
+
+.Controls--operations,
+.Controls--functions,
+.Controls--main {
+  display: grid;
+  gap: 12px;
+}
+
+.Controls--operations {
+  grid-area: o;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr;
+}
+
+.Controls--functions {
+  grid-area: f;
+  grid-template-rows: repeat(5, 1fr);
+}
+
+.Controls--main {
+  grid-area: m;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr);
 }

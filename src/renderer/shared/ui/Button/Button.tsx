@@ -3,7 +3,7 @@ import React, { PropsWithChildren } from 'react';
 import './Button.css';
 
 interface IButtonProps extends PropsWithChildren {
-  type?: 'main' | 'function' | 'operation' | 'zero';
+  type?: 'main' | 'function' | 'operation' | 'additional' | 'zero';
 }
 
 export function Button(props: IButtonProps) {
@@ -12,6 +12,7 @@ export function Button(props: IButtonProps) {
   const classNames = clsx('Button', {
     'Button--function': type === 'function',
     'Button--operator': type === 'operation',
+    'Button--additional': type === 'additional',
     'Button--zero': type === 'zero',
   });
 
