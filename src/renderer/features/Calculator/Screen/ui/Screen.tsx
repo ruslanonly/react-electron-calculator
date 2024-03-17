@@ -1,5 +1,7 @@
+import { useAppSelector } from 'shared';
 import './Screen.css';
 
 export function Screen() {
-  return <div className="Screen">1231</div>;
+  const screen = useAppSelector((state) => state.calculator.screen);
+  return <div className="Screen">{screen}</div>;
 }
