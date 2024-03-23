@@ -3,7 +3,7 @@ import './Controls.css';
 import { useCalculator } from 'entities/Calculator';
 
 export function Controls() {
-  const { appendDigit } = useCalculator();
+  const { appendDigit, clearScreen, addComma } = useCalculator();
   return (
     <div className="Controls">
       <div className="Controls--left">
@@ -14,7 +14,9 @@ export function Controls() {
       </div>
       <div className="Controls--right">
         <div className="Controls--operations">
-          <Button type="operation">AC</Button>
+          <Button type="operation" onClick={clearScreen}>
+            AC
+          </Button>
           <Button type="operation">
             x<sup>2</sup>
           </Button>
@@ -33,8 +35,10 @@ export function Controls() {
               {digit}
             </Button>
           ))}
-          <Button type="zero">0</Button>
-          <Button>,</Button>
+          <Button onClick={() => appendDigit('0')} type="zero">
+            0
+          </Button>
+          <Button onClick={addComma}>,</Button>
         </div>
       </div>
     </div>
