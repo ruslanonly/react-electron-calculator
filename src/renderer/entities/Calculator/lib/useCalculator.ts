@@ -1,5 +1,6 @@
 import { setScreen } from 'entities/Calculator';
 import { useAppDispatch, useAppSelector } from 'shared';
+import { EOperation, setOperation, setResult } from '../slice';
 
 export function useCalculator() {
   const dispatch = useAppDispatch();
@@ -19,6 +20,26 @@ export function useCalculator() {
       dispatch(setScreen('0,'));
     } else if (!screen.includes(',')) {
       dispatch(setScreen(`${screen},`));
+    }
+  };
+
+  const binaryOperationReducer = (
+    x: number,
+    y: number,
+    operation: EOperation,
+  ) => {
+    switch (operation) {
+      case EOperation.Addition:
+        return x + y;
+      case EOperation.Subtraction:
+        return x - y;
+      case EOperation.Multiplication:
+        return x * y;
+      case EOperation.Division:
+        return x / y;
+      default:
+        ((never: never) => {})(operation);
+        return NaN;
     }
   };
 

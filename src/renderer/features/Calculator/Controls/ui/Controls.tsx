@@ -1,6 +1,6 @@
+import { useCalculator } from 'entities/Calculator';
 import { Button } from 'shared/ui';
 import './Controls.css';
-import { useCalculator } from 'entities/Calculator';
 
 export function Controls() {
   const { appendDigit, clearScreen, addComma } = useCalculator();
