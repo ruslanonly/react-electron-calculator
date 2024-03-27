@@ -10,12 +10,14 @@ interface ICalculatorState {
   screen: string;
   operation: EOperation | null;
   result: number;
+  isWaiting: boolean;
 }
 
 const initialState: ICalculatorState = {
   operation: null,
   screen: '',
   result: NaN,
+  isWaiting: false,
 };
 
 const calculatorSlice = createSlice({
@@ -26,16 +28,20 @@ const calculatorSlice = createSlice({
       state.screen = action.payload;
     },
 
-    setOperation: (state, action: PayloadAction<EOperation>) => {
+    setOperation: (state, action: PayloadAction<EOperation | null>) => {
       state.operation = action.payload;
     },
 
     setResult: (state, action: PayloadAction<number>) => {
       state.result = action.payload;
     },
+    setIsWaiting: (state, action: PayloadAction<boolean>) => {
+      state.isWaiting = action.payload;
+    },
   },
 });
 
-export const { setScreen, setOperation, setResult } = calculatorSlice.actions;
+export const { setScreen, setOperation, setResult, setIsWaiting } =
+  calculatorSlice.actions;
 
 export default calculatorSlice.reducer;
