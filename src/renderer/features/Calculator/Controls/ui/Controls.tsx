@@ -1,9 +1,10 @@
+import { EOperation, useCalculator } from 'entities/Calculator';
 import { Button } from 'shared/ui';
 import './Controls.css';
-import { useCalculator } from 'entities/Calculator';
 
 export function Controls() {
-  const { appendDigit, clearScreen, addComma } = useCalculator();
+  const { appendDigit, clearScreen, addComma, executeBinaryOperation } =
+    useCalculator();
   return (
     <div className="Controls">
       <div className="Controls--left">
@@ -23,11 +24,33 @@ export function Controls() {
           <Button type="operation">sqrt</Button>
         </div>
         <div className="Controls--functions">
-          <Button type="function">÷</Button>
-          <Button type="function">×</Button>
-          <Button type="function">-</Button>
-          <Button type="function">+</Button>
-          <Button type="function">=</Button>
+          <Button
+            type="function"
+            onClick={() => executeBinaryOperation(EOperation.Division)}
+          >
+            ÷
+          </Button>
+          <Button
+            type="function"
+            onClick={() => executeBinaryOperation(EOperation.Multiplication)}
+          >
+            ×
+          </Button>
+          <Button
+            type="function"
+            onClick={() => executeBinaryOperation(EOperation.Subtraction)}
+          >
+            -
+          </Button>
+          <Button
+            type="function"
+            onClick={() => executeBinaryOperation(EOperation.Addition)}
+          >
+            +
+          </Button>
+          <Button type="function" onClick={() => executeBinaryOperation()}>
+            =
+          </Button>
         </div>
         <div className="Controls--main">
           {[7, 8, 9, 4, 5, 6, 1, 2, 3].map((digit) => (

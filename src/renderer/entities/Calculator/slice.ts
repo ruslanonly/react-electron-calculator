@@ -1,15 +1,23 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
+export enum EOperation {
+  Addition = 0,
+  Subtraction = 1,
+  Multiplication = 2,
+  Division = 3,
+}
 interface ICalculatorState {
   screen: string;
-  operation: string;
+  operation: EOperation | null;
   result: number;
+  isWaiting: boolean;
 }
 
 const initialState: ICalculatorState = {
-  operation: '',
+  operation: null,
   screen: '',
-  result: 0,
+  result: NaN,
+  isWaiting: false,
 };
 
 const calculatorSlice = createSlice({
@@ -20,16 +28,20 @@ const calculatorSlice = createSlice({
       state.screen = action.payload;
     },
 
-    setOperation: (state, action: PayloadAction<string>) => {
+    setOperation: (state, action: PayloadAction<EOperation | null>) => {
       state.operation = action.payload;
     },
 
     setResult: (state, action: PayloadAction<number>) => {
       state.result = action.payload;
     },
+    setIsWaiting: (state, action: PayloadAction<boolean>) => {
+      state.isWaiting = action.payload;
+    },
   },
 });
 
-export const { setScreen, setOperation, setResult } = calculatorSlice.actions;
+export const { setScreen, setOperation, setResult, setIsWaiting } =
+  calculatorSlice.actions;
 
 export default calculatorSlice.reducer;
