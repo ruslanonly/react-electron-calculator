@@ -1,50 +1,86 @@
-import { EOperation, useCalculator } from 'entities/Calculator';
+import { useCalculator } from 'entities/Calculator';
 import { Button } from 'shared/ui';
 import './Controls.css';
+import { EBinaryOperation, EUnaryOperation } from 'entities/Calculator/slice';
 
 export function Controls() {
-  const { appendDigit, clearScreen, addComma, executeBinaryOperation } =
-    useCalculator();
+  const {
+    appendDigit,
+    clearScreen,
+    addComma,
+    executeBinaryOperation,
+    executeUnaryOperation,
+  } = useCalculator();
   return (
     <div className="Controls">
       <div className="Controls--left">
-        <Button type="additional">sin</Button>
-        <Button type="additional">cos</Button>
-        <Button type="additional">floor</Button>
-        <Button type="additional">ceil</Button>
+        <Button
+          type="additional"
+          onClick={() => executeUnaryOperation(EUnaryOperation.SIN)}
+        >
+          sin
+        </Button>
+        <Button
+          type="additional"
+          onClick={() => executeUnaryOperation(EUnaryOperation.COS)}
+        >
+          cos
+        </Button>
+        <Button
+          type="additional"
+          onClick={() => executeUnaryOperation(EUnaryOperation.FLOOR)}
+        >
+          floor
+        </Button>
+        <Button
+          type="additional"
+          onClick={() => executeUnaryOperation(EUnaryOperation.CEIL)}
+        >
+          ceil
+        </Button>
       </div>
       <div className="Controls--right">
         <div className="Controls--operations">
           <Button type="operation" onClick={clearScreen}>
             AC
           </Button>
-          <Button type="operation">
+          <Button
+            type="operation"
+            onClick={() => executeUnaryOperation(EUnaryOperation.SQUARE)}
+          >
             x<sup>2</sup>
           </Button>
-          <Button type="operation">sqrt</Button>
+          <Button
+            type="operation"
+            onClick={() => executeUnaryOperation(EUnaryOperation.SQRT)}
+          >
+            sqrt
+          </Button>
         </div>
         <div className="Controls--functions">
           <Button
             type="function"
-            onClick={() => executeBinaryOperation(EOperation.Division)}
+            onClick={() => executeBinaryOperation(EBinaryOperation.Division)}
           >
             ÷
           </Button>
           <Button
             type="function"
-            onClick={() => executeBinaryOperation(EOperation.Multiplication)}
+            onClick={() =>
+              executeBinaryOperation(EBinaryOperation.Multiplication)
+            }
           >
             ×
           </Button>
           <Button
             type="function"
-            onClick={() => executeBinaryOperation(EOperation.Subtraction)}
+            onClick={() => executeBinaryOperation(EBinaryOperation.Subtraction)}
           >
             -
           </Button>
           <Button
             type="function"
-            onClick={() => executeBinaryOperation(EOperation.Addition)}
+            onClick={() => executeBinaryOperation(EBinaryOperation.Addition)}
           >
             +
           </Button>
