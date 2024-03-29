@@ -20,6 +20,50 @@
 
 </div>
 
+# Welcome to Calculator!
+
+The calculator in usual mode provides a wider range of functions than the basic calculator. Here's a description of the main functions of each button:
+- **MC** (Memory Clear): Clears the calculator's memory, removing the saved value.
+- **MR** (Memory Recall): Retrieves a value from memory and displays it on the screen.
+- **M+** (Memory Add): Adds the current value on the screen to the value in memory and saves the result.
+- **M-** (Memory Subtract): Subtracts the current value on the screen from the value in memory and saves the result.
+- **MS** (Memory Store): Saves the current value on the screen to the calculator's memory.
+- ⌫ (Backspace): Deletes the last entered digit.
+- **CE** (Clear Entry): Clears the current value on the screen without affecting the calculator's memory.
+- **C** (Clear): Completely clears the current value on the screen and resets the calculator's memory.
+- **±** (Negate): Changes the sign of the current number to its opposite.
+- **√** (Square Root): Computes the square root of the current number.
+- **%** (Percentage): Converts the current number into a percentage.
+- **1/x** (Reciprocal): Computes the reciprocal of the current number (1/x).
+- **÷** (Divide): Initiates a division operation.
+- **×** (Multiply): Initiates a multiplication operation.
+- **-** (Subtract): Initiates a subtraction operation.
+- **+** (Add): Initiates an addition operation.
+- **=** (Equals): Performs calculations based on the selected operation and displays the result on the screen.
+- **.** (Decimal Point): Adds a decimal point to the current number, allowing for input of decimal numbers.
+
+In the advanced mode of the calculator with sine and roots, additional functions are available, such as trigonometric operations and root operations. Here's a description of each button in this mode:
+
+- **sin** (Sine): Computes the sine of the angle entered by the user.
+- **cos** (Cosine): Computes the cosine of the angle entered by the user.
+- **tan** (Tangent): Computes the tangent of the angle entered by the user.
+- **sin⁻¹** (Arcsine): Computes the arcsine of the specified value.
+- **cos⁻¹** (Arccosine): Computes the arccosine of the specified value.
+- **tan⁻¹** (Arctangent): Computes the arctangent of the specified value.
+- **x²** (Square): Squares the current number.
+- **x³** (Cube): Cubes the current number.
+- **xʸ** (Power): Raises the current number to the power entered by the user after pressing the button.
+- **∛x** (Cube Root): Computes the cube root of the current number.
+- **∜x** (Fourth Root): Computes the fourth root of the current number.
+- **eˣ** (Exponential): Raises the number e (Euler's number) to the power of the current number.
+- **ln** (Natural Logarithm): Computes the natural logarithm of the current number.
+- **log₁₀** (Common Logarithm): Computes the common (base 10) logarithm of the current number.
+- **π** (Pi): Inputs the value of the mathematical constant π (pi).
+- **e** (Euler's Number): Inputs the value of the mathematical constant e (Euler's number).
+- **Rand** (Random): Generates a random number in the range from 0 to 1.
+
+These additional functions allow users to perform more complex mathematical operations, such as working with trigonometric functions, powers, roots, and logarithms.
+
 ## Install
 
 Clone the repo and install dependencies:
