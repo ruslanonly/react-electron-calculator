@@ -97,7 +97,7 @@ export function Controls() {
           <Button onClick={() => appendDigit('0')} type="zero">
             0
           </Button>
-          <Button onClick={addComma}>,</Button>
+          <Button onClick={addComma}>.</Button>
         </div>
       </div>
     </div>

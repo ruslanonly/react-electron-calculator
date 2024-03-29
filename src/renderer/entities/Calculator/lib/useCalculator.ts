@@ -31,9 +31,9 @@ export function useCalculator() {
 
   const addComma = () => {
     if (screen.length === 0) {
-      dispatch(setScreen('0,'));
-    } else if (!screen.includes(',')) {
-      dispatch(setScreen(`${screen},`));
+      dispatch(setScreen('0.'));
+    } else if (!screen.includes('.')) {
+      dispatch(setScreen(`${screen}.`));
     }
   };
 
@@ -64,7 +64,8 @@ export function useCalculator() {
   };
 
   const executeUnaryOperation = (operation?: EUnaryOperation) => {
-    const value = Number(screen);
+    const value = parseFloat(screen);
+    console.log(value);
     if (Number.isNaN(value)) {
       return;
     }
@@ -95,7 +96,7 @@ export function useCalculator() {
   };
 
   const executeBinaryOperation = (next?: EBinaryOperation) => {
-    const value = Number(screen);
+    const value = parseFloat(screen);
     if (Number.isNaN(value)) {
       return;
     }
