@@ -1,34 +1,47 @@
-name: Test
+name: Build and Release Electron Vue App
 
-on: [push, pull_request]
+on:
+  push:
+    branches: [main]
+    tags:
+      - 'v*'
+  pull_request:
+    branches: [main]
+    types: [closed]
+    tags:
+      - 'v*'
 
 jobs:
-  test:
-    runs-on: ${{ matrix.os }}
-
-    strategy:
-      matrix:
-        os: [macos-latest, windows-latest, ubuntu-latest]
-
+  build:
+    runs-on: windows-latest
+    environment: app
     steps:
-      - name: Check out Git repository
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v2
 
-      - name: Install Node.js and NPM
-        uses: actions/setup-node@v3
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
         with:
-          node-version: 18
-          cache: npm
+          node-version: '21'
 
-      - name: npm install
-        run: |
-          npm install
+      - name: Install dependencies
+        run: npm install
 
-      - name: npm test
+      # Adding Vitest test step
+      - name: Run Vitest Tests
+        run: npm run test
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          npm run package
-          npm run lint
-          npm exec tsc
-          npm test
+          # You can specify any environment variables needed for your tests here
+          NODE_ENV: test
+
+      - name: Build Electron App
+        run: npm run electron:build
+        env:
+          NODE_OPTIONS: ${{ vars.NODE_OPTIONS }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+
+      - name: Publish Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: dist_electron/Calculator Setup*.exe
+        env:
+          GITHUB_TOKEN:
