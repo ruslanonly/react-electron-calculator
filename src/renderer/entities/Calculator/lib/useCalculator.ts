@@ -7,6 +7,8 @@ import {
   setResult,
   setScreen,
 } from '../slice';
+import { binaryOperationReducer } from './binaryOperationReducer';
+import { unaryOperationReducer } from './unaryOperationReducer';
 
 export function useCalculator() {
   const dispatch = useAppDispatch();
@@ -37,32 +39,6 @@ export function useCalculator() {
     }
   };
 
-  const unaryOperationReducer = (
-    operand: number,
-    operation: EUnaryOperation | null,
-  ) => {
-    const x = Number.isNaN(operand) ? 0 : operand;
-    switch (operation) {
-      case EUnaryOperation.SQRT:
-        return Math.sqrt(x);
-      case EUnaryOperation.SQUARE:
-        return x * x;
-      case EUnaryOperation.CEIL:
-        return Math.ceil(x);
-      case EUnaryOperation.FLOOR:
-        return Math.floor(x);
-      case EUnaryOperation.SIN:
-        return Math.sin((x * Math.PI) / 180);
-      case EUnaryOperation.COS:
-        return Math.cos((x * Math.PI) / 180);
-      case null:
-        return x;
-      default:
-        ((never: never) => {})(operation);
-        return NaN;
-    }
-  };
-
   const executeUnaryOperation = (operation?: EUnaryOperation) => {
     const value = parseFloat(screen);
     console.log(value);
@@ -71,28 +47,6 @@ export function useCalculator() {
     }
     const operationResult = unaryOperationReducer(value, operation ?? null);
     dispatch(setScreen(operationResult.toString()));
-  };
-
-  const binaryOperationReducer = (
-    x: number,
-    y: number,
-    operation: EBinaryOperation | null,
-  ) => {
-    switch (operation) {
-      case EBinaryOperation.Addition:
-        return (Number.isNaN(x) ? 0 : x) + y;
-      case EBinaryOperation.Subtraction:
-        return (Number.isNaN(x) ? 0 : x) - y;
-      case EBinaryOperation.Multiplication:
-        return (Number.isNaN(x) ? 1 : x) * y;
-      case EBinaryOperation.Division:
-        return (Number.isNaN(x) ? 1 : x) / y;
-      case null:
-        return y;
-      default:
-        ((never: never) => {})(operation);
-        return NaN;
-    }
   };
 
   const executeBinaryOperation = (next?: EBinaryOperation) => {
