@@ -5,6 +5,7 @@ import './Button.css';
 interface IButtonProps extends PropsWithChildren {
   type?: 'main' | 'function' | 'operation' | 'additional' | 'zero';
   onClick?: () => void;
+  style?: React.CSSProperties;
 }
 
 export function Button(props: IButtonProps) {

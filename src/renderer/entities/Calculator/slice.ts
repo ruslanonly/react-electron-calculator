@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-export enum EUnaryOperation {
+export const enum EUnaryOperation {
   SQRT,
   SQUARE,
   SIN,
@@ -9,7 +9,7 @@ export enum EUnaryOperation {
   CEIL,
 }
 
-export enum EBinaryOperation {
+export const enum EBinaryOperation {
   Addition = 0,
   Subtraction = 1,
   Multiplication = 2,
