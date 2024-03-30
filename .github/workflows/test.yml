@@ -26,8 +26,10 @@ jobs:
       - name: Install dependencies
         run: npm install --legacy-peer-deps
 
-      # Adding Vitest test step
-      - name: Run Vitest Tests
+      - name: Build App before testing
+        run: npm run build
+
+      - name: Run Tests
         run: npm run test
         env:
           # You can specify any environment variables needed for your tests here
