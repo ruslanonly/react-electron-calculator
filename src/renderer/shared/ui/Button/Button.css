@@ -16,13 +16,13 @@
 }
 
 .Button:hover {
-  background: black;
-  color: white;
+  background: white;
+  color: black;
 }
 
 .Button:active {
-  background: black;
-  color: white;
+  background: white;
+  color: black;
 }
 
 .Button--operator {
