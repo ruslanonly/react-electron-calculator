@@ -1,7 +1,10 @@
-import { useCalculator } from 'entities/Calculator';
 import { Button } from 'shared/ui';
 import './Controls.css';
-import { EBinaryOperation, EUnaryOperation } from 'entities/Calculator/slice';
+import {
+  EBinaryOperation,
+  EUnaryOperation,
+  useCalculator,
+} from 'entities/Calculator';
 
 export function Controls() {
   const {
