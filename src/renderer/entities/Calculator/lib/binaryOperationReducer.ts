@@ -17,6 +17,7 @@ export const binaryOperationReducer = (
     case null:
       return y;
     default:
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       ((never: never) => {})(operation);
       return NaN;
   }

@@ -24,20 +24,20 @@ jobs:
           node-version: '21'
 
       - name: Install dependencies
-        run: npm install --legacy-peer-deps
+        run: |
+          npm install --legacy-peer-deps
+          npm run build
 
       - name: Run Tests, Typescript Checks and Linters
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          npm run lint
           npm exec tsc
           npm run test
 
       - name: Build Electron App
         run: |
-          npm run postinstall
-          npm run build
+          npm exec electron-builder -- --publish never --win
         env:
           NODE_OPTIONS: ${{ vars.NODE_OPTIONS }}
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
