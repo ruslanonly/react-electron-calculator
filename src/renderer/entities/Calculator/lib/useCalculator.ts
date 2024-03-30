@@ -41,7 +41,7 @@ export function useCalculator() {
 
   const executeUnaryOperation = (operation?: EUnaryOperation) => {
     const value = parseFloat(screen);
-    console.log(value);
+
     if (Number.isNaN(value)) {
       return;
     }

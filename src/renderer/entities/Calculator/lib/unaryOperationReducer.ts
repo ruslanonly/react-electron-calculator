@@ -21,6 +21,7 @@ export const unaryOperationReducer = (
     case null:
       return x;
     default:
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       ((never: never) => {})(operation);
       return NaN;
   }
