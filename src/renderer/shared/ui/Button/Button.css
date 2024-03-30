@@ -18,11 +18,13 @@
 .Button:hover {
   background: white;
   color: black;
+  opacity: 0.85;
 }
 
 .Button:active {
   background: white;
   color: black;
+  opacity: 0.85;
 }
 
 .Button--operator {
