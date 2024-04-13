@@ -45,6 +45,6 @@ jobs:
       - name: Publish Release
         uses: softprops/action-gh-release@v1
         with:
-          files: release/build/Calculator Setup*.exe
+          files: release/build/Catculator Setup*.exe
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
