@@ -55,10 +55,12 @@ export function useCalculator() {
         return Math.sin((x * Math.PI) / 180);
       case EUnaryOperation.COS:
         return Math.cos((x * Math.PI) / 180);
-      case EUnaryOperation.LN:
-        return Math.log(x);
       case EUnaryOperation.LOG10:
         return Math.log(x);
+      case EUnaryOperation.LN:
+        return Math.log(x);
+      case EUnaryOperation.TenTimesX:
+        return Math.pow(10, x);
       case null:
         return x;
       default:
