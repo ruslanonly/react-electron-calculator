@@ -7,6 +7,9 @@ export const enum EUnaryOperation {
   COS,
   FLOOR,
   CEIL,
+  LN,
+  LOG10,
+  TenTimesX
 }
 
 export const enum EBinaryOperation {
