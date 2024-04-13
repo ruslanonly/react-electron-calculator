@@ -8,7 +8,8 @@ export const enum EUnaryOperation {
   FLOOR,
   CEIL,
   LN,
-  LOG10
+  LOG10,
+  TenTimesX
 }
 
 export const enum EBinaryOperation {

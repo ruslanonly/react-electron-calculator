@@ -19,15 +19,21 @@ export function Controls() {
       <div className="Controls--left">
         <Button
           type="additional"
+          onClick={() => executeUnaryOperation(EUnaryOperation.LOG10)}
+        >
+          log10
+        </Button>
+        <Button
+          type="additional"
           onClick={() => executeUnaryOperation(EUnaryOperation.LN)}
         >
           ln
         </Button>
         <Button
           type="additional"
-          onClick={() => executeUnaryOperation(EUnaryOperation.LOG10)}
+          onClick={() => executeUnaryOperation(EUnaryOperation.TenTimesX)}
         >
-          log10
+          10<sup>x</sup>
         </Button>
         <Button
           type="additional"
