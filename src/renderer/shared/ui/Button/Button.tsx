@@ -3,8 +3,12 @@ import React, { PropsWithChildren } from 'react';
 import './Button.css';
 
 interface IButtonProps extends PropsWithChildren {
+  // eslint-disable-next-line react/require-default-props
   type?: 'main' | 'function' | 'operation' | 'additional' | 'zero';
+  // eslint-disable-next-line react/require-default-props
   onClick?: () => void;
+  // eslint-disable-next-line react/require-default-props
+  style?: React.CSSProperties;
 }
 
 export function Button(props: IButtonProps) {
