@@ -55,6 +55,8 @@ export function useCalculator() {
         return Math.sin((x * Math.PI) / 180);
       case EUnaryOperation.COS:
         return Math.cos((x * Math.PI) / 180);
+      case EUnaryOperation.LN:
+        return Math.log(x);
       case null:
         return x;
       default:

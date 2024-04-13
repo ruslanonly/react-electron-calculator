@@ -7,6 +7,7 @@ export enum EUnaryOperation {
   COS,
   FLOOR,
   CEIL,
+  LN,
 }
 
 export enum EBinaryOperation {
