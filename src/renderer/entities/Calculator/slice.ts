@@ -8,7 +8,8 @@ export enum EUnaryOperation {
   FLOOR,
   CEIL,
   LN,
-  LOG10
+  LOG10,
+  TenTimesX
 }
 
 export enum EBinaryOperation {
