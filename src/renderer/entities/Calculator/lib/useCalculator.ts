@@ -7,6 +7,8 @@ import {
   setResult,
   setScreen,
 } from '../slice';
+import { binaryOperationReducer } from './binaryOperationReducer';
+import { unaryOperationReducer } from './unaryOperationReducer';
 
 export function useCalculator() {
   const dispatch = useAppDispatch();
@@ -31,44 +33,15 @@ export function useCalculator() {
 
   const addComma = () => {
     if (screen.length === 0) {
-      dispatch(setScreen('0,'));
-    } else if (!screen.includes(',')) {
-      dispatch(setScreen(`${screen},`));
-    }
-  };
-
-  const unaryOperationReducer = (
-    operand: number,
-    operation: EUnaryOperation | null,
-  ) => {
-    const x = Number.isNaN(operand) ? 0 : operand;
-    switch (operation) {
-      case EUnaryOperation.SQRT:
-        return Math.sqrt(x);
-      case EUnaryOperation.SQUARE:
-        return x * x;
-      case EUnaryOperation.CEIL:
-        return Math.ceil(x);
-      case EUnaryOperation.FLOOR:
-        return Math.floor(x);
-      case EUnaryOperation.SIN:
-        return Math.sin((x * Math.PI) / 180);
-      case EUnaryOperation.COS:
-        return Math.cos((x * Math.PI) / 180);
-      case EUnaryOperation.LN:
-        return Math.log(x);
-      case EUnaryOperation.LOG10:
-        return Math.log(x);
-      case null:
-        return x;
-      default:
-        ((never: never) => {})(operation);
-        return NaN;
+      dispatch(setScreen('0.'));
+    } else if (!screen.includes('.')) {
+      dispatch(setScreen(`${screen}.`));
     }
   };
 
   const executeUnaryOperation = (operation?: EUnaryOperation) => {
-    const value = Number(screen);
+    const value = parseFloat(screen);
+
     if (Number.isNaN(value)) {
       return;
     }
@@ -76,30 +49,8 @@ export function useCalculator() {
     dispatch(setScreen(operationResult.toString()));
   };
 
-  const binaryOperationReducer = (
-    x: number,
-    y: number,
-    operation: EBinaryOperation | null,
-  ) => {
-    switch (operation) {
-      case EBinaryOperation.Addition:
-        return (Number.isNaN(x) ? 0 : x) + y;
-      case EBinaryOperation.Subtraction:
-        return (Number.isNaN(x) ? 0 : x) - y;
-      case EBinaryOperation.Multiplication:
-        return (Number.isNaN(x) ? 1 : x) * y;
-      case EBinaryOperation.Division:
-        return (Number.isNaN(x) ? 1 : x) / y;
-      case null:
-        return y;
-      default:
-        ((never: never) => {})(operation);
-        return NaN;
-    }
-  };
-
   const executeBinaryOperation = (next?: EBinaryOperation) => {
-    const value = Number(screen);
+    const value = parseFloat(screen);
     if (Number.isNaN(value)) {
       return;
     }

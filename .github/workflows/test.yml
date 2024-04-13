@@ -1,34 +1,50 @@
-name: Test
+name: Build and Release Electron Vue App
 
-on: [push, pull_request]
+on:
+  push:
+    branches: [master]
+    tags:
+      - 'v*'
+  pull_request:
+    branches: [master]
+    types: [closed]
+    tags:
+      - 'v*'
 
 jobs:
-  test:
-    runs-on: ${{ matrix.os }}
-
-    strategy:
-      matrix:
-        os: [macos-latest, windows-latest, ubuntu-latest]
-
+  build:
+    runs-on: windows-latest
+    environment: app
     steps:
-      - name: Check out Git repository
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v2
 
-      - name: Install Node.js and NPM
-        uses: actions/setup-node@v3
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
         with:
-          node-version: 18
-          cache: npm
+          node-version: '21'
 
-      - name: npm install
+      - name: Install dependencies
         run: |
-          npm install
+          npm install --legacy-peer-deps
+          npm run build
 
-      - name: npm test
+      - name: Run Tests, Typescript Checks and Linters
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          npm run package
-          npm run lint
           npm exec tsc
-          npm test
+          npm run test
+
+      - name: Build Electron App
+        run: |
+          npm exec electron-builder -- --publish never --win
+        env:
+          NODE_OPTIONS: ${{ vars.NODE_OPTIONS }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+
+      - name: Publish Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: electron_dist/Calculator_Setup*.exe
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}

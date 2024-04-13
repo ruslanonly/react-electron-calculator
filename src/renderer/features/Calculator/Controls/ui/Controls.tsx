@@ -1,7 +1,10 @@
-import { useCalculator } from 'entities/Calculator';
 import { Button } from 'shared/ui';
 import './Controls.css';
-import { EBinaryOperation, EUnaryOperation } from 'entities/Calculator/slice';
+import {
+  EBinaryOperation,
+  EUnaryOperation,
+  useCalculator,
+} from 'entities/Calculator';
 
 export function Controls() {
   const {
@@ -109,7 +112,7 @@ export function Controls() {
           <Button onClick={() => appendDigit('0')} type="zero">
             0
           </Button>
-          <Button onClick={addComma}>,</Button>
+          <Button onClick={addComma}>.</Button>
         </div>
       </div>
     </div>

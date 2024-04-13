@@ -1,6 +1,6 @@
 .Button {
   height: 50px;
-  background: #333;
+  background: #335;
   border-radius: 100px;
   cursor: pointer;
   display: flex;
@@ -16,15 +16,19 @@
 }
 
 .Button:hover {
+  background: white;
+  color: #000;
   opacity: 0.85;
 }
 
 .Button:active {
-  opacity: 0.75;
+  background: white;
+  color: #000;
+  opacity: 0.85;
 }
 
 .Button--operator {
-  color: black;
+  color: #000;
   background: #a5a5a5;
   font-size: 20px;
 }
