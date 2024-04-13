@@ -1,4 +1,4 @@
-name: Build and Release Electron Vue App
+name: Build and Release Electron React Calculator App
 
 on:
   push:
@@ -45,6 +45,6 @@ jobs:
       - name: Publish Release
         uses: softprops/action-gh-release@v1
         with:
-          files: electron_dist/Calculator_Setup*.exe
+          files: release/build/Calculator Setup*.exe
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
