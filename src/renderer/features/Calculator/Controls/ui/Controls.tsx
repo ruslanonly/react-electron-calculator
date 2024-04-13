@@ -18,13 +18,13 @@ export function Controls() {
           type="additional"
           onClick={() => executeUnaryOperation(EUnaryOperation.LN)}
         >
-          sin
+          ln
         </Button>
         <Button
           type="additional"
           onClick={() => executeUnaryOperation(EUnaryOperation.LOG10)}
         >
-          sin
+          log10
         </Button>
         <Button
           type="additional"
