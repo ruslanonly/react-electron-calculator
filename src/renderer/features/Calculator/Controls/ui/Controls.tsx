@@ -16,6 +16,18 @@ export function Controls() {
       <div className="Controls--left">
         <Button
           type="additional"
+          onClick={() => executeUnaryOperation(EUnaryOperation.LN)}
+        >
+          sin
+        </Button>
+        <Button
+          type="additional"
+          onClick={() => executeUnaryOperation(EUnaryOperation.LOG10)}
+        >
+          sin
+        </Button>
+        <Button
+          type="additional"
           onClick={() => executeUnaryOperation(EUnaryOperation.SIN)}
         >
           sin
